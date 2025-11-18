@@ -10,6 +10,7 @@ LangGraph-based agent that generates a detailed, machine-readable code tree arti
 - Dependency graph construction with intra-repository resolution heuristics.
 - Artifact export as JSON for consumption by other coding agents.
 - Streamlit dashboard to inspect file summaries, dependencies, and symbol hierarchies.
+- Streamlit dashboard with a focused dependency view that auto-limits oversized graphs for large projects.
 
 ## Requirements
 
@@ -31,6 +32,8 @@ code-tree-agent --target PATH_TO_REPO --output artifacts/code_tree.json
 ```
 
 The `--target` flag defaults to the current directory, so you can omit it to analyze the active workspace. The command produces a JSON artifact that includes per-file structural metadata (Python, Java, and JS/TS/JSX symbols) and a dependency graph. By default the output is placed at `artifacts/code_tree.json`.
+
+For very large repositories the Streamlit UI automatically falls back to a focused dependency view to keep the graph responsive. Use the sidebar toggle to switch between focused and full views (full view appears only when the graph size is below the safety threshold).
 
 ## Streamlit UI
 

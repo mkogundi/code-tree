@@ -11,6 +11,8 @@ import streamlit as st
 
 st.set_page_config(page_title="Code Tree Explorer", layout="wide")
 
+MAX_GRAPH_NODES = 400
+
 
 @lru_cache(maxsize=8)
 def _load_artifact(path_str: str) -> Dict[str, object]:
@@ -148,6 +150,14 @@ def _build_graphviz(
     return "\n".join(lines)
 
 
+def _collect_all_nodes(dot_map: Dict[str, List[str]]) -> Set[str]:
+    nodes: Set[str] = set()
+    for source, targets in dot_map.items():
+        nodes.add(source)
+        nodes.update(targets)
+    return nodes
+
+
 def main() -> None:
     st.title("Code Tree Explorer")
 
@@ -172,12 +182,19 @@ def main() -> None:
     metadata = artifact.get("metadata", {})
     root_path_str = artifact.get("root_path")
     root_path = Path(root_path_str).resolve() if root_path_str else None
+    all_graph_nodes = _collect_all_nodes(dependency_graph)
+    graph_node_count = len(all_graph_nodes)
+    graph_too_large = graph_node_count > MAX_GRAPH_NODES
     node_to_label, label_to_node = _prepare_node_maps(dependency_graph, root_path)
 
     cols = st.columns(3)
     cols[0].metric("Files", metadata.get("file_count", len(files)))
     cols[1].metric("Dependencies", metadata.get("dependency_edges", 0))
     cols[2].metric("Warnings", len(artifact.get("errors", [])))
+    if dependency_graph:
+        st.sidebar.caption(
+            f"Graph contains {graph_node_count} nodes. Full view is {'disabled' if graph_too_large else 'available'}."
+        )
 
     file_options = [file.get("path", "<unknown>") for file in files]
 
@@ -282,10 +299,15 @@ def main() -> None:
     focus_nodes.update(dependency_nodes)
     focus_nodes.update(dependent_nodes)
 
+    view_options: List[str] = ["Focused (selected file)"]
+    if dependency_graph and not graph_too_large:
+        view_options.append("Full graph")
+
     view_mode = st.sidebar.radio(
         "Dependency graph view",
-        ("Full graph", "Focused (selected file)"),
-        help="Switch to focus mode to highlight the selected file with its direct dependencies and dependents.",
+        tuple(view_options),
+        index=0,
+        help="Full graph is hidden for large projects." if graph_too_large else "Switch to focus mode to highlight the selected file with its direct dependencies and dependents.",
     )
 
     st.caption(
