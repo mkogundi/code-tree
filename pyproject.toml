@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "code-tree-agent"
+version = "0.1.0"
+description = "LangGraph-based code tree analysis agent and visualization UI."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "Code Tree Agent Team" }
+]
+dependencies = [
+  "langgraph>=0.2.18",
+  "langchain-core>=0.1.43",
+  "typer>=0.12.3",
+  "rich>=13.7.0",
+  "networkx>=3.2.1",
+  "streamlit>=1.29.0",
+  "javalang>=0.13.0"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.4.4",
+  "ruff>=0.1.8",
+  "black>=23.12.1"
+]
+
+[project.scripts]
+code-tree-agent = "code_tree_agent.cli:app"

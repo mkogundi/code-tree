@@ -1,0 +1,695 @@
+{
+  "root_path": "C:\\Users\\Admin\\code-tree",
+  "files": [
+    {
+      "path": ".github\\copilot-instructions.md",
+      "language": "text",
+      "summary": "90 non-empty lines",
+      "symbols": [],
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "path": ".vscode\\tasks.json",
+      "language": "json",
+      "summary": "19 non-empty lines",
+      "symbols": [],
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "path": "README.md",
+      "language": "text",
+      "summary": "42 non-empty lines",
+      "symbols": [],
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "path": "artifacts\\code_tree.json",
+      "language": "json",
+      "summary": "695 non-empty lines",
+      "symbols": [],
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "path": "pyproject.toml",
+      "language": "toml",
+      "summary": "30 non-empty lines",
+      "symbols": [],
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "path": "src\\code_tree_agent.egg-info\\SOURCES.txt",
+      "language": "text",
+      "summary": "18 non-empty lines",
+      "symbols": [],
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "path": "src\\code_tree_agent.egg-info\\dependency_links.txt",
+      "language": "text",
+      "summary": "0 non-empty lines",
+      "symbols": [],
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "path": "src\\code_tree_agent.egg-info\\entry_points.txt",
+      "language": "text",
+      "summary": "2 non-empty lines",
+      "symbols": [],
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "path": "src\\code_tree_agent.egg-info\\requires.txt",
+      "language": "text",
+      "summary": "11 non-empty lines",
+      "symbols": [],
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "path": "src\\code_tree_agent.egg-info\\top_level.txt",
+      "language": "text",
+      "summary": "1 non-empty lines",
+      "symbols": [],
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "path": "src\\code_tree_agent\\__init__.py",
+      "language": "python",
+      "summary": "Top-level declarations: 0 classes, 0 functions; module length 3 statements.",
+      "symbols": [],
+      "dependencies": [
+        "cli.app"
+      ],
+      "dependents": []
+    },
+    {
+      "path": "src\\code_tree_agent\\artifact.py",
+      "language": "python",
+      "summary": "Top-level declarations: 3 classes, 0 functions; module length 8 statements.",
+      "symbols": [
+        {
+          "name": "CodeSymbol",
+          "symbol_type": "classdef",
+          "lineno": 11,
+          "docstring": "Represents an extracted code symbol such as a class or function.",
+          "children": []
+        },
+        {
+          "name": "FileArtifact",
+          "symbol_type": "classdef",
+          "lineno": 22,
+          "docstring": "Holds the structured analysis for a single source file.",
+          "children": []
+        },
+        {
+          "name": "AnalysisArtifact",
+          "symbol_type": "classdef",
+          "lineno": 34,
+          "docstring": "Top-level artifact describing the entire repository tree.",
+          "children": [
+            {
+              "name": "to_dict",
+              "symbol_type": "functiondef",
+              "lineno": 43,
+              "docstring": "Return a JSON-serializable dictionary.",
+              "children": []
+            },
+            {
+              "name": "to_json",
+              "symbol_type": "functiondef",
+              "lineno": 48,
+              "docstring": "Persist the artifact to disk and return the destination path.",
+              "children": []
+            }
+          ]
+        }
+      ],
+      "dependencies": [
+        "__future__.annotations",
+        "dataclasses.asdict",
+        "dataclasses.dataclass",
+        "dataclasses.field",
+        "pathlib.Path",
+        "typing.Dict",
+        "typing.List",
+        "typing.Optional"
+      ],
+      "dependents": []
+    },
+    {
+      "path": "src\\code_tree_agent\\cli.py",
+      "language": "python",
+      "summary": "Top-level declarations: 0 classes, 2 functions; module length 13 statements.",
+      "symbols": [
+        {
+          "name": "_analyze",
+          "symbol_type": "functiondef",
+          "lineno": 18,
+          "docstring": "Run the analysis graph against the selected target.",
+          "children": []
+        },
+        {
+          "name": "app",
+          "symbol_type": "functiondef",
+          "lineno": 73,
+          "docstring": "Entry point used by the console script.",
+          "children": []
+        }
+      ],
+      "dependencies": [
+        "__future__.annotations",
+        "graph.build_analysis_graph",
+        "pathlib.Path",
+        "rich.console.Console",
+        "rich.table.Table",
+        "state.AnalysisState",
+        "state.build_initial_state",
+        "typer",
+        "typing.Optional"
+      ],
+      "dependents": []
+    },
+    {
+      "path": "src\\code_tree_agent\\graph.py",
+      "language": "python",
+      "summary": "Top-level declarations: 0 classes, 1 functions; module length 9 statements.",
+      "symbols": [
+        {
+          "name": "build_analysis_graph",
+          "symbol_type": "functiondef",
+          "lineno": 14,
+          "docstring": "Return a compiled LangGraph instance representing the pipeline.",
+          "children": []
+        }
+      ],
+      "dependencies": [
+        "__future__.annotations",
+        "langgraph.graph.END",
+        "langgraph.graph.StateGraph",
+        "nodes.artifact_builder.build_artifact",
+        "nodes.dependency_analysis.analyze_dependencies",
+        "nodes.file_analysis.analyze_files",
+        "nodes.file_discovery.discover_files",
+        "state.AnalysisState"
+      ],
+      "dependents": []
+    },
+    {
+      "path": "src\\code_tree_agent\\nodes\\artifact_builder.py",
+      "language": "python",
+      "summary": "Top-level declarations: 0 classes, 2 functions; module length 8 statements.",
+      "symbols": [
+        {
+          "name": "_relative",
+          "symbol_type": "functiondef",
+          "lineno": 12,
+          "docstring": null,
+          "children": []
+        },
+        {
+          "name": "build_artifact",
+          "symbol_type": "functiondef",
+          "lineno": 19,
+          "docstring": "Construct the final artifact and optionally flush it to disk.",
+          "children": []
+        }
+      ],
+      "dependencies": [
+        "__future__.annotations",
+        "artifact.AnalysisArtifact",
+        "artifact.FileArtifact",
+        "pathlib.Path",
+        "state.AnalysisState",
+        "state.FileSummary",
+        "typing.Dict",
+        "typing.List"
+      ],
+      "dependents": []
+    },
+    {
+      "path": "src\\code_tree_agent\\nodes\\dependency_analysis.py",
+      "language": "python",
+      "summary": "Top-level declarations: 0 classes, 3 functions; module length 9 statements.",
+      "symbols": [
+        {
+          "name": "_module_candidates",
+          "symbol_type": "functiondef",
+          "lineno": 12,
+          "docstring": null,
+          "children": []
+        },
+        {
+          "name": "_build_module_index",
+          "symbol_type": "functiondef",
+          "lineno": 22,
+          "docstring": null,
+          "children": []
+        },
+        {
+          "name": "analyze_dependencies",
+          "symbol_type": "functiondef",
+          "lineno": 30,
+          "docstring": "Populate dependency graph and dependents by resolving imports.",
+          "children": []
+        }
+      ],
+      "dependencies": [
+        "__future__.annotations",
+        "collections.defaultdict",
+        "pathlib.Path",
+        "state.AnalysisState",
+        "state.FileSummary",
+        "typing.Dict",
+        "typing.List"
+      ],
+      "dependents": []
+    },
+    {
+      "path": "src\\code_tree_agent\\nodes\\file_analysis.py",
+      "language": "python",
+      "summary": "Top-level declarations: 0 classes, 2 functions; module length 8 statements.",
+      "symbols": [
+        {
+          "name": "_analyze_single_file",
+          "symbol_type": "functiondef",
+          "lineno": 23,
+          "docstring": null,
+          "children": []
+        },
+        {
+          "name": "analyze_files",
+          "symbol_type": "functiondef",
+          "lineno": 50,
+          "docstring": "Analyze each file captured during discovery.",
+          "children": []
+        }
+      ],
+      "dependencies": [
+        "__future__.annotations",
+        "pathlib.Path",
+        "state.AnalysisState",
+        "state.FileSummary",
+        "typing.Dict",
+        "typing.List",
+        "utils.file_parsing.detect_language",
+        "utils.file_parsing.extract_java_imports",
+        "utils.file_parsing.extract_java_symbols",
+        "utils.file_parsing.extract_js_imports",
+        "utils.file_parsing.extract_js_symbols",
+        "utils.file_parsing.extract_python_imports",
+        "utils.file_parsing.extract_python_symbols",
+        "utils.file_parsing.read_source",
+        "utils.file_parsing.resolve_dependencies",
+        "utils.file_parsing.summarize_file"
+      ],
+      "dependents": []
+    },
+    {
+      "path": "src\\code_tree_agent\\nodes\\file_discovery.py",
+      "language": "python",
+      "summary": "Top-level declarations: 0 classes, 2 functions; module length 10 statements.",
+      "symbols": [
+        {
+          "name": "_iter_files",
+          "symbol_type": "functiondef",
+          "lineno": 31,
+          "docstring": null,
+          "children": []
+        },
+        {
+          "name": "discover_files",
+          "symbol_type": "functiondef",
+          "lineno": 40,
+          "docstring": "Populate the state with the list of files to analyze.",
+          "children": []
+        }
+      ],
+      "dependencies": [
+        "__future__.annotations",
+        "os",
+        "pathlib.Path",
+        "state.AnalysisState",
+        "typing.Dict",
+        "typing.Iterable",
+        "typing.List"
+      ],
+      "dependents": []
+    },
+    {
+      "path": "src\\code_tree_agent\\state.py",
+      "language": "python",
+      "summary": "Top-level declarations: 2 classes, 1 functions; module length 9 statements.",
+      "symbols": [
+        {
+          "name": "FileSummary",
+          "symbol_type": "classdef",
+          "lineno": 13,
+          "docstring": "Intermediate representation for each analyzed file.",
+          "children": []
+        },
+        {
+          "name": "AnalysisState",
+          "symbol_type": "classdef",
+          "lineno": 24,
+          "docstring": "State container exchanged between LangGraph nodes.",
+          "children": []
+        },
+        {
+          "name": "build_initial_state",
+          "symbol_type": "functiondef",
+          "lineno": 36,
+          "docstring": "Return the initial state given a repository root path.",
+          "children": []
+        }
+      ],
+      "dependencies": [
+        "__future__.annotations",
+        "artifact.AnalysisArtifact",
+        "artifact.CodeSymbol",
+        "dataclasses.dataclass",
+        "dataclasses.field",
+        "pathlib.Path",
+        "typing.Dict",
+        "typing.List",
+        "typing.Optional",
+        "typing.TypedDict"
+      ],
+      "dependents": []
+    },
+    {
+      "path": "src\\code_tree_agent\\utils\\file_parsing.py",
+      "language": "python",
+      "summary": "Top-level declarations: 0 classes, 20 functions; module length 46 statements.",
+      "symbols": [
+        {
+          "name": "detect_language",
+          "symbol_type": "functiondef",
+          "lineno": 46,
+          "docstring": "Infer a human-readable language label from a file path.",
+          "children": []
+        },
+        {
+          "name": "read_source",
+          "symbol_type": "functiondef",
+          "lineno": 67,
+          "docstring": "Load a file as UTF-8 text, ignoring decoding errors.",
+          "children": []
+        },
+        {
+          "name": "_line_number_from_offset",
+          "symbol_type": "functiondef",
+          "lineno": 73,
+          "docstring": null,
+          "children": []
+        },
+        {
+          "name": "extract_python_symbols",
+          "symbol_type": "functiondef",
+          "lineno": 77,
+          "docstring": "Return a nested collection of symbol nodes discovered via AST parsing.",
+          "children": [
+            {
+              "name": "_walk",
+              "symbol_type": "functiondef",
+              "lineno": 87,
+              "docstring": null,
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "extract_python_imports",
+          "symbol_type": "functiondef",
+          "lineno": 106,
+          "docstring": "Collect import targets from Python source text.",
+          "children": []
+        },
+        {
+          "name": "extract_java_symbols",
+          "symbol_type": "functiondef",
+          "lineno": 129,
+          "docstring": "Return type and method information for Java source files.",
+          "children": []
+        },
+        {
+          "name": "_extract_java_symbols_fallback",
+          "symbol_type": "functiondef",
+          "lineno": 163,
+          "docstring": null,
+          "children": []
+        },
+        {
+          "name": "extract_java_imports",
+          "symbol_type": "functiondef",
+          "lineno": 180,
+          "docstring": null,
+          "children": []
+        },
+        {
+          "name": "extract_js_symbols",
+          "symbol_type": "functiondef",
+          "lineno": 184,
+          "docstring": null,
+          "children": [
+            {
+              "name": "_register",
+              "symbol_type": "functiondef",
+              "lineno": 187,
+              "docstring": null,
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "extract_js_imports",
+          "symbol_type": "functiondef",
+          "lineno": 220,
+          "docstring": null,
+          "children": []
+        },
+        {
+          "name": "basic_text_summary",
+          "symbol_type": "functiondef",
+          "lineno": 227,
+          "docstring": "Quick summary describing file size and complexity.",
+          "children": []
+        },
+        {
+          "name": "python_summary",
+          "symbol_type": "functiondef",
+          "lineno": 234,
+          "docstring": "Return a human-friendly summary for Python modules.",
+          "children": []
+        },
+        {
+          "name": "java_summary",
+          "symbol_type": "functiondef",
+          "lineno": 255,
+          "docstring": null,
+          "children": []
+        },
+        {
+          "name": "javascript_summary",
+          "symbol_type": "functiondef",
+          "lineno": 262,
+          "docstring": null,
+          "children": []
+        },
+        {
+          "name": "summarize_file",
+          "symbol_type": "functiondef",
+          "lineno": 273,
+          "docstring": "Generate a short description tailored to the detected language.",
+          "children": []
+        },
+        {
+          "name": "_resolve_python_import",
+          "symbol_type": "functiondef",
+          "lineno": 286,
+          "docstring": null,
+          "children": []
+        },
+        {
+          "name": "_resolve_js_path",
+          "symbol_type": "functiondef",
+          "lineno": 303,
+          "docstring": null,
+          "children": []
+        },
+        {
+          "name": "_resolve_js_import",
+          "symbol_type": "functiondef",
+          "lineno": 322,
+          "docstring": null,
+          "children": []
+        },
+        {
+          "name": "_resolve_java_import",
+          "symbol_type": "functiondef",
+          "lineno": 339,
+          "docstring": null,
+          "children": []
+        },
+        {
+          "name": "resolve_dependencies",
+          "symbol_type": "functiondef",
+          "lineno": 353,
+          "docstring": "Resolve import strings to repository paths when possible.",
+          "children": []
+        }
+      ],
+      "dependencies": [
+        "__future__.annotations",
+        "artifact.CodeSymbol",
+        "ast",
+        "javalang",
+        "pathlib.Path",
+        "re",
+        "typing.Iterable",
+        "typing.List",
+        "typing.Optional",
+        "typing.Sequence"
+      ],
+      "dependents": []
+    },
+    {
+      "path": "ui\\app.py",
+      "language": "python",
+      "summary": "Syntax error encountered; detailed summary unavailable.",
+      "symbols": [],
+      "dependencies": [],
+      "dependents": []
+    }
+  ],
+  "dependency_graph": {
+    "C:\\Users\\Admin\\code-tree\\.github\\copilot-instructions.md": [],
+    "C:\\Users\\Admin\\code-tree\\.vscode\\tasks.json": [],
+    "C:\\Users\\Admin\\code-tree\\artifacts\\code_tree.json": [],
+    "C:\\Users\\Admin\\code-tree\\pyproject.toml": [],
+    "C:\\Users\\Admin\\code-tree\\README.md": [],
+    "C:\\Users\\Admin\\code-tree\\src\\code_tree_agent\\__init__.py": [
+      "cli.app"
+    ],
+    "C:\\Users\\Admin\\code-tree\\src\\code_tree_agent\\artifact.py": [
+      "__future__.annotations",
+      "dataclasses.asdict",
+      "dataclasses.dataclass",
+      "dataclasses.field",
+      "pathlib.Path",
+      "typing.Dict",
+      "typing.List",
+      "typing.Optional"
+    ],
+    "C:\\Users\\Admin\\code-tree\\src\\code_tree_agent\\cli.py": [
+      "__future__.annotations",
+      "graph.build_analysis_graph",
+      "pathlib.Path",
+      "rich.console.Console",
+      "rich.table.Table",
+      "state.AnalysisState",
+      "state.build_initial_state",
+      "typer",
+      "typing.Optional"
+    ],
+    "C:\\Users\\Admin\\code-tree\\src\\code_tree_agent\\graph.py": [
+      "__future__.annotations",
+      "langgraph.graph.END",
+      "langgraph.graph.StateGraph",
+      "nodes.artifact_builder.build_artifact",
+      "nodes.dependency_analysis.analyze_dependencies",
+      "nodes.file_analysis.analyze_files",
+      "nodes.file_discovery.discover_files",
+      "state.AnalysisState"
+    ],
+    "C:\\Users\\Admin\\code-tree\\src\\code_tree_agent\\nodes\\artifact_builder.py": [
+      "__future__.annotations",
+      "artifact.AnalysisArtifact",
+      "artifact.FileArtifact",
+      "pathlib.Path",
+      "state.AnalysisState",
+      "state.FileSummary",
+      "typing.Dict",
+      "typing.List"
+    ],
+    "C:\\Users\\Admin\\code-tree\\src\\code_tree_agent\\nodes\\dependency_analysis.py": [
+      "__future__.annotations",
+      "collections.defaultdict",
+      "pathlib.Path",
+      "state.AnalysisState",
+      "state.FileSummary",
+      "typing.Dict",
+      "typing.List"
+    ],
+    "C:\\Users\\Admin\\code-tree\\src\\code_tree_agent\\nodes\\file_analysis.py": [
+      "__future__.annotations",
+      "pathlib.Path",
+      "state.AnalysisState",
+      "state.FileSummary",
+      "typing.Dict",
+      "typing.List",
+      "utils.file_parsing.detect_language",
+      "utils.file_parsing.extract_java_imports",
+      "utils.file_parsing.extract_java_symbols",
+      "utils.file_parsing.extract_js_imports",
+      "utils.file_parsing.extract_js_symbols",
+      "utils.file_parsing.extract_python_imports",
+      "utils.file_parsing.extract_python_symbols",
+      "utils.file_parsing.read_source",
+      "utils.file_parsing.resolve_dependencies",
+      "utils.file_parsing.summarize_file"
+    ],
+    "C:\\Users\\Admin\\code-tree\\src\\code_tree_agent\\nodes\\file_discovery.py": [
+      "__future__.annotations",
+      "os",
+      "pathlib.Path",
+      "state.AnalysisState",
+      "typing.Dict",
+      "typing.Iterable",
+      "typing.List"
+    ],
+    "C:\\Users\\Admin\\code-tree\\src\\code_tree_agent\\state.py": [
+      "__future__.annotations",
+      "artifact.AnalysisArtifact",
+      "artifact.CodeSymbol",
+      "dataclasses.dataclass",
+      "dataclasses.field",
+      "pathlib.Path",
+      "typing.Dict",
+      "typing.List",
+      "typing.Optional",
+      "typing.TypedDict"
+    ],
+    "C:\\Users\\Admin\\code-tree\\src\\code_tree_agent\\utils\\file_parsing.py": [
+      "__future__.annotations",
+      "artifact.CodeSymbol",
+      "ast",
+      "javalang",
+      "pathlib.Path",
+      "re",
+      "typing.Iterable",
+      "typing.List",
+      "typing.Optional",
+      "typing.Sequence"
+    ],
+    "C:\\Users\\Admin\\code-tree\\src\\code_tree_agent.egg-info\\dependency_links.txt": [],
+    "C:\\Users\\Admin\\code-tree\\src\\code_tree_agent.egg-info\\entry_points.txt": [],
+    "C:\\Users\\Admin\\code-tree\\src\\code_tree_agent.egg-info\\requires.txt": [],
+    "C:\\Users\\Admin\\code-tree\\src\\code_tree_agent.egg-info\\SOURCES.txt": [],
+    "C:\\Users\\Admin\\code-tree\\src\\code_tree_agent.egg-info\\top_level.txt": [],
+    "C:\\Users\\Admin\\code-tree\\ui\\app.py": []
+  },
+  "metadata": {
+    "file_count": "21",
+    "dependency_edges": "84"
+  },
+  "errors": []
+}

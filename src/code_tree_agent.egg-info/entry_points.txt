@@ -1,0 +1,2 @@
+[console_scripts]
+code-tree-agent = code_tree_agent.cli:app

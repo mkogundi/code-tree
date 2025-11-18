@@ -1,0 +1,19 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Analyze Code Tree",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"-m",
+				"code_tree_agent.cli",
+				"--target",
+				".",
+				"--output",
+				"artifacts/code_tree.json"
+			],
+			"problemMatcher": []
+		}
+	]
+}
